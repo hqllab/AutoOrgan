@@ -19,9 +19,12 @@ Install dependencies:
   
 ### Usage
 
-step1: open config.py to set your own input and output path.
-step2: download model file,and set model_path is like '/home/xxx/Dataset105_TotalBone/nnUNetTrainer__nnUNetPlans__3d_fullres'
-step3: to run main.py, wait a while, you'll find result in output folder.
+step1: open config.py to set your own input and output path.  
+
+step2: download model file,and set model_path is like '/home/xxx/Dataset105_TotalBone/nnUNetTrainer__nnUNetPlans__3d_fullres'  
+
+step3: to run main.py, wait a while, you'll find result in output folder.  
+
 You can download model file in this link:https://drive.google.com/file/d/1ys89h0it4Lo6e5Y8fyU7SmRf9O41y3pP/view?usp=sharing 
 ### Class details
 
