@@ -512,8 +512,7 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 
 ## Video tutorial
 
-https://github.com/user-attachments/assets/c9f9ee0a-f74d-4907-aa21-484dcfd10948
-
+https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing
 📦 使用流程
 ### 1. 配置
 我们模型的使用基于nnUNet框架,请参考下面的链接安装并配置nnUnet [nnUnet安装步骤](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
