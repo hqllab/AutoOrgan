@@ -1,14 +1,23 @@
 # <center> AutoOrgan 
   
 📌 简介<br> 
-随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了 AutoOrgan, 一个专门用于 CT 影像中骨结构和器官的自动分割的深度学习框架 。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
-
-AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考映射文件labels.json文件，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
-
 <p align="center">
     <img src="resources/images/AutoOrgan.gif" width="800" alt="示例图片" >
 </p>
- 
+
+随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了 AutoOrgan, 一个专门用于 CT 影像中骨结构和器官的自动分割的深度学习框架 。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
+
+AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特且实用的优势。首先该框架在处理肋骨与椎骨等复杂解剖区域时，能够有效修复两者之间存在的缺损或连接断裂问题,如下图(b)所示，AutoOrgan可以在肋骨椎骨连接处生成高精度的分割图.
+<p align="center">
+    <img src="resources/images/rib_compare.png" width="800" alt="示例图片" >
+</p>
+
+此外，AutoOrgan 的训练数据集具有高度多样性，不仅涵盖了常规 CT 图像，还包括多种类型的增强型CT和PET/CT图像。这种多模态数据的支持使得AutoOrgan在面对不同成像条件和设备来源的数据时，依然能够保持良好的分割性能与泛化能力。如下图所示,左侧(a)为AutoOrgan的分割结果,右侧为另一个主流分割框架的结果.
+<p align="center">
+    <img src="resources/images/rib_image.png" width="800" alt="示例图片" >
+</p>
+AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考映射文件labels.json文件，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
+</br>
 <details>
 <summary style="margin-left: 25px;">骨骼可分割部位</summary>
 <div style="margin-left: 25px;">
@@ -392,7 +401,7 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 
 </div>
 </details>
-
+</br>
 <details>
 <summary style="margin-left: 25px;">器官可分割部位</summary>
 <div style="margin-left: 25px;">
@@ -510,9 +519,6 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 </div>
 </details>
 
-## Video tutorial
-
-https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing
 📦 使用流程
 ### 1. 配置
 我们模型的使用基于nnUNet框架,请参考下面的链接安装并配置nnUnet [nnUnet安装步骤](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
@@ -560,14 +566,14 @@ nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 </p>
 此插件的主要功能如下：
   
-✅ 支持多种医学图像格式（NIfTI、DICOM、NRRD 等）
-
+✅ 支持多种医学图像格式（NIfTI、DICOM、NRRD 等  
 ✅ 可扩展性强，支持加载自定义模型与标签配置文件（JSON）
 ✅ 分割结果实时渲染展示，并可导出为标准 NIfTI 或 LabelMap 格式
 ✅ 支持 GPU 加速推理（可选）
 ✅ 基于 Python 和 Onnx 实现后端推理逻辑，与 3D Slicer 模块无缝集成。
     插件安装和使用指南请参考 [AutoOrganSlicer安装步骤](resources/images/插件使用方法.pdf ) -> 待完善
-  
+    [插件视频教程](https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing)
+
 🤝 贡献指南
 欢迎贡献代码、改进文档、提交 issue 或分享你的使用经验！
 请参考 CONTRIBUTING.md 获取详细说明。
@@ -575,15 +581,17 @@ nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 📞 联系方式
 如有任何疑问、合作意向或定制开发需求，请联系：
 
-
 📧 Email: vplus@163.com
 🌐 GitHub: https://github.com/hqllab/AutoOrgan
   
 ❤️ 致谢
 感谢以下开源项目对本项目的启发与支持：
-nnU-Net
-TotalSegmentertor
-MOOSE
+Wasserthal, J., Breit, H.-C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W., Heye, T., Boll, D., Cyriac, J., Yang, S., Bach, M., Segeroth, M., 2023. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. Radiology: Artificial Intelligence. https://doi.org/10.1148/ryai.230024
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nat Methods 18, 203–211 (2021). https://doi.org/10.1038/s41592-020-01008-z
+
+Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D., Nakuz, T., Shin, H. M., Sima, A. K., Kitzmantl, D., Badawi, R. D., Nardo, L., Cherry, S. R., Spencer, B. A., Hacker, M., & Beyer, T. (2022). Fully-automated, semantic segmentation of whole-body 18F-FDG PET/CT images based on data-centric artificial intelligence. Journal of Nuclear Medicine. https://doi.org/10.2967/jnumed.122.264063
+
 
 感谢所有参与测试和反馈的医生、研究人员和开发者。AutoOrgan 的诞生离不开你们的支持与鼓励！
 
