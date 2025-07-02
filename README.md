@@ -2,7 +2,7 @@
   
 📌 简介<br> 
 随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了 AutoOrgan, 一个专门用于 CT 影像中骨结构和器官的自动分割的深度学习框架 。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
-  
+
 AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考映射文件labels.json文件，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
 
 <p align="center">
@@ -10,7 +10,7 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 </p>
  
 <details>
-<summary style="margin-left: 25px;">AutoOrgan可分割部位</summary>
+<summary style="margin-left: 25px;">骨骼可分割部位</summary>
 <div style="margin-left: 25px;">
 
 <table>
@@ -393,6 +393,127 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 </div>
 </details>
 
+<details>
+<summary style="margin-left: 25px;">器官可分割部位</summary>
+<div style="margin-left: 25px;">
+
+<table>
+  <tr>
+    <th></th>
+    <th>名称</th>
+    <th>标签值</th>
+  </tr>
+
+  <tr>
+    <td rowspan="24">器官</td>
+    <td>spleen</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>kidney_right</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>kidney_left</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>gallbladder</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>liver</td>
+    <td>5</td>
+  </tr>    
+  <tr>
+    <td>stomach</td>
+    <td>6</td>
+  </tr>    
+  <tr>
+    <td>pancreas</td>
+    <td>7</td>
+  </tr>  
+  <tr>
+    <td>lung_upper_lobe_left</td>
+    <td>8</td>
+  </tr>  
+  <tr>
+    <td>lung_lower_lobe_left</td>
+    <td>9</td>
+  </tr>  
+  <tr>
+    <td>lung_upper_lobe_right</td>
+    <td>10</td>
+  </tr>  
+  <tr>
+    <td>lung_middle_lobe_right</td>
+    <td>11</td>
+  </tr>  
+  <tr>
+    <td>lung_lower_lobe_right</td>
+    <td>12</td>
+  </tr>  
+  <tr>
+    <td>esophagus</td>
+    <td>13</td>
+  </tr>  
+  <tr>
+    <td>trachea</td>
+    <td>14</td>
+  </tr>  
+  <tr>
+    <td>thyroid_gland</td>
+    <td>15</td>
+  </tr>                    
+
+  <tr>
+    <td>small_bowel</td>
+    <td>16</td>
+  </tr>    
+  <tr>
+    <td>duodenum</td>
+    <td>17</td>
+  </tr>    
+  <tr>
+    <td>colon</td>
+    <td>18</td>
+  </tr>    
+  <tr>
+    <td>urinary_bladder</td>
+    <td>19</td>
+  </tr>    
+  <tr>
+    <td>prostate</td>
+    <td>20</td>
+  </tr>    
+  <tr>
+    <td>heart</td>
+    <td>21</td>
+  </tr>    
+  <tr>
+    <td>aorta</td>
+    <td>22</td>
+  </tr>    
+  <tr>
+    <td>brain</td>
+    <td>23</td>
+  </tr>                  
+  <tr>
+    <td>spinal_cord</td>
+    <td>24</td>
+  </tr>   
+
+  </tr>
+
+</table>
+
+</div>
+</details>
+
+## Video tutorial
+
+https://github.com/user-attachments/assets/c9f9ee0a-f74d-4907-aa21-484dcfd10948
+
 📦 使用流程
 ### 1. 配置
 我们模型的使用基于nnUNet框架,请参考下面的链接安装并配置nnUnet [nnUnet安装步骤](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
@@ -441,6 +562,7 @@ nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 此插件的主要功能如下：
   
 ✅ 支持多种医学图像格式（NIfTI、DICOM、NRRD 等）
+
 ✅ 可扩展性强，支持加载自定义模型与标签配置文件（JSON）
 ✅ 分割结果实时渲染展示，并可导出为标准 NIfTI 或 LabelMap 格式
 ✅ 支持 GPU 加速推理（可选）

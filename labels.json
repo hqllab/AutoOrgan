@@ -85,6 +85,7 @@
         "hip_right":2,
         "sacrum":3
     },
+    
     "Lower_limb":{
         "femur_left":1,
         "femur_right":2,
@@ -100,6 +101,33 @@
         "metatarsal_right": 12,
         "phalanges_feet_left": 13,
         "phalanges_feet_right": 14
+    },
+
+    "organ":{
+        "spleen":1,
+        "kidney_right":2,
+        "kidney_left":3,
+        "gallbladder":4,
+        "liver":5,
+        "stomach":6,
+        "pancreas":7,
+        "lung_upper_lobe_left":8,
+        "lung_lower_lobe_left":9,
+        "lung_upper_lobe_right":10,
+        "lung_middle_lobe_right":11,
+        "lung_lower_lobe_right":12,
+        "esophagus":13,
+        "trachea":14,
+        "thyroid_gland":15,
+        "small_bowel":16,
+        "duodenum":17,
+        "colon":18,
+        "urinary_bladder":19,
+        "prostate":20,
+        "heart":21,
+        "aorta":22,
+        "brain":23,
+        "spinal_cord":24
     }
 
 }
