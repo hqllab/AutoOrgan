@@ -1,61 +1,394 @@
 # <center> AutoOrgan 
   
-📌 简介
+📌 简介<br> 
 随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了 AutoOrgan, 一个专门用于 CT 影像中骨结构和器官的自动分割的深度学习框架 。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
   
 AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考映射文件labels.json文件，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
-  
+
 <p align="center">
     <img src="resources/images/AutoOrgan.gif" width="800" alt="示例图片" >
 </p>
-
+ 
 <details>
-<summary style="margin-left: 25px;">Class map for 9 classes in AbdomenAtlas 1.0 and 25 classes in AbdomenAtlas 1.1</summary>
+<summary style="margin-left: 25px;">AutoOrgan可分割部位</summary>
 <div style="margin-left: 25px;">
 
-```python
-# class map for the AbdomenAtlas 1.0 dataset
-class_map_abdomenatlas_1_0 = {
-    1: 'aorta',
-    2: 'gall_bladder',
-    3: 'kidney_left',
-    4: 'kidney_right',
-    5: 'liver',
-    6: 'pancreas',
-    7: 'postcava',
-    8: 'spleen',
-    9: 'stomach',
-    }
+<table>
+  <tr>
+    <th></th>
+    <th>名称</th>
+    <th>标签值</th>
+  </tr>
 
-# class map for the AbdomenAtlas 1.1 dataset
-class_map_abdomenatlas_1_1 = {
-    1: 'aorta', 
-    2: 'gall_bladder', 
-    3: 'kidney_left', 
-    4: 'kidney_right', 
-    5: 'liver', 
-    6: 'pancreas', 
-    7: 'postcava', 
-    8: 'spleen', 
-    9: 'stomach', 
-    10: 'adrenal_gland_left', 
-    11: 'adrenal_gland_right', 
-    12: 'bladder', 
-    13: 'celiac_trunk', 
-    14: 'colon', 
-    15: 'duodenum', 
-    16: 'esophagus', 
-    17: 'femur_left', 
-    18: 'femur_right', 
-    19: 'hepatic_vessel', 
-    20: 'intestine', 
-    21: 'lung_left', 
-    22: 'lung_right', 
-    23: 'portal_vein_and_splenic_vein', 
-    24: 'prostate', 
-    25: 'rectum'
-    }
-```
+  <tr>
+    <td rowspan="6">全身总体骨骼</td>
+    <td>颅骨</td>
+    <td>1</td>
+  </tr>
+
+  <tr>
+    <td>椎骨</td>
+    <td>2</td>
+  </tr>
+
+  <tr>
+    <td>肋骨</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>上肢</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>盆骨下肢</td>
+    <td>5</td>
+  </tr>    
+  <tr>
+    <td>下肢</td>
+    <td>6</td>
+  </tr>    
+
+  <tr>
+    <td rowspan="24">椎骨</td>
+    <td>vertebrae_C1</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>vertebrae_C2</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>vertebrae_C3</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>vertebrae_C4</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>vertebrae_C5</td>
+    <td>5</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_C6</td>
+    <td>6</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_C7</td>
+    <td>7</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T1</td>
+    <td>8</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T2</td>
+    <td>9</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T3</td>
+    <td>10</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T4</td>
+    <td>11</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T5</td>
+    <td>12</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T6</td>
+    <td>13</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T7</td>
+    <td>14</td>
+  </tr>  
+  <tr>
+    <td>vertebrae_T8</td>
+    <td>15</td>
+  </tr>                    
+
+  <tr>
+    <td>vertebrae_T9</td>
+    <td>16</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_T10</td>
+    <td>17</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_11</td>
+    <td>18</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_T12</td>
+    <td>19</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_L1</td>
+    <td>20</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_L2</td>
+    <td>21</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_L3</td>
+    <td>22</td>
+  </tr>    
+  <tr>
+    <td>vertebrae_L4</td>
+    <td>23</td>
+  </tr>                  
+  <tr>
+    <td>vertebrae_L5</td>
+    <td>24</td>
+  </tr>   
+
+  <tr>
+    <td rowspan="24">肋骨</td>
+    <td>rib_left_1</td>
+    <td>1</td>
+  </tr>
+
+  <tr>
+    <td>rib_right_1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>rib_left_2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>rib_right_2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>rib_left_3</td>
+    <td>5</td>
+  </tr>    
+  <tr>
+    <td>rib_right_3</td>
+    <td>6</td>
+  </tr>    
+  <tr>
+    <td>rib_left_4</td>
+    <td>7</td>
+  </tr>  
+  <tr>
+    <td>rib_right_4</td>
+    <td>8</td>
+  </tr>  
+  <tr>
+    <td>rib_left_5</td>
+    <td>9</td>
+  </tr>  
+  <tr>
+    <td>rib_right_5</td>
+    <td>10</td>
+  </tr>  
+  <tr>
+    <td>rib_left_6</td>
+    <td>11</td>
+  </tr>  
+  <tr>
+    <td>rib_right_6</td>
+    <td>12</td>
+  </tr>  
+  <tr>
+    <td>rib_left_7</td>
+    <td>13</td>
+  </tr>  
+  <tr>
+    <td>rib_right_7</td>
+    <td>14</td>
+  </tr>  
+  <tr>
+    <td>rib_left_8</td>
+    <td>15</td>
+  </tr>                    
+
+  <tr>
+    <td>rib_right_8</td>
+    <td>16</td>
+  </tr>    
+  <tr>
+    <td>rib_left_9</td>
+    <td>17</td>
+  </tr>    
+  <tr>
+    <td>rib_right_9</td>
+    <td>18</td>
+  </tr>    
+  <tr>
+    <td>rib_left_10</td>
+    <td>19</td>
+  </tr>    
+  <tr>
+    <td>rib_right_10</td>
+    <td>20</td>
+  </tr>    
+  <tr>
+    <td>rib_left_11</td>
+    <td>21</td>
+  </tr>    
+  <tr>
+    <td>rib_right_11</td>
+    <td>22</td>
+  </tr>    
+  <tr>
+    <td>rib_left_12</td>
+    <td>23</td>
+  </tr>                  
+  <tr>
+    <td>rib_right_12</td>
+    <td>24</td>
+  </tr>   
+
+  <tr>
+    <td rowspan="16">下肢骨</td>
+    <td>humerus_left</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>humerus_right</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>radius_left</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>radius_right</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>ulna_left</td>
+    <td>5</td>
+  </tr>    
+  <tr>
+    <td>ulna_right</td>
+    <td>6</td>
+  </tr>    
+  <tr>
+    <td>carpal_left</td>
+    <td>7</td>
+  </tr>  
+  <tr>
+    <td>carpal_right</td>
+    <td>8</td>
+  </tr>  
+  <tr>
+    <td>metacarpal_left</td>
+    <td>9</td>
+  </tr>  
+  <tr>
+    <td>metacarpal_right</td>
+    <td>10</td>
+  </tr>  
+  <tr>
+    <td>phalanges_hand_left</td>
+    <td>11</td>
+  </tr>  
+  <tr>
+    <td>phalanges_hand_right</td>
+    <td>12</td>
+  </tr>  
+  <tr>
+    <td>clavicula_left</td>
+    <td>13</td>
+  </tr>  
+  <tr>
+    <td>clavicula_right</td>
+    <td>14</td>
+  </tr>  
+  <tr>
+    <td>scapula_left</td>
+    <td>15</td>
+  </tr>                    
+
+  <tr>
+    <td>scapula_right</td>
+    <td>16</td>
+  </tr>    
+
+  <tr>
+    <td rowspan="3">盆骨</td>
+    <td>hip_left</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>hip_right</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>sacrum</td>
+    <td>3</td>
+  </tr>
+
+  <tr>
+    <td rowspan="14">下肢骨</td>
+    <td>femur_left</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>femur_right</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>patella_left</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>patella_right</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>tibia_left</td>
+    <td>5</td>
+  </tr>    
+  <tr>
+    <td>tibia_right</td>
+    <td>6</td>
+  </tr>    
+  <tr>
+    <td>fibula_left</td>
+    <td>7</td>
+  </tr>  
+  <tr>
+    <td>fibula_right</td>
+    <td>8</td>
+  </tr>  
+  <tr>
+    <td>tarsal_left</td>
+    <td>9</td>
+  </tr>  
+  <tr>
+    <td>tarsal_right</td>
+    <td>10</td>
+  </tr>  
+  <tr>
+    <td>metatarsal_left</td>
+    <td>11</td>
+  </tr>  
+  <tr>
+    <td>metatarsal_right</td>
+    <td>12</td>
+  </tr>  
+  <tr>
+    <td>phalanges_feet_left</td>
+    <td>13</td>
+  </tr>  
+  <tr>
+    <td>phalanges_feet_right</td>
+    <td>14</td>
+  </tr>  
+
+  </tr>
+
+</table>
 
 </div>
 </details>
@@ -89,7 +422,7 @@ CUDA_VISIBLE_DEVICES=5 nnUNetv2_predict -i INPUT_FOLDER  -o  OUTPUT_FOLDER  -d T
 ```sh
 CUDA_VISIBLE_DEVICES=0 nnUNetv2_predict -i /home/data/ct -o /home/data/ct_rib_result -d 888 -tr nnUNetTrainerNoMirroring -f 0 -c 3d_fullres --c 
 ```
-### 4. 训练
+### 3. 训练
    如果你想在我们的数据集上重新训练模型请, 请先通过邮件申请我们的精标注数据集, 然后按照以下步骤进行训练:
    1. 下载链接中的数据集
    2. 将数据集解压到nnUNet_raw目录下,并设置好对应的文件目录和dataset.json文件
@@ -100,7 +433,7 @@ nnUNetv2_plan_and_preprocess -d <your_dataset_id> -pl ExperimentPlanner -c 3d_fu
 ```
 nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 ```
-### 5. 3d slicer插件功能：
+### 4. 3d slicer插件功能：
    我们团队独立开发了一款基于AutoOrgan和3D Slicer的医学图像智能分割插件 —— AutoOrganSlicer，专注于为医生和研究人员提供高效、精准、易用的三维影像分割工具。
 <p align="center">
     <img src="resources/images/3d slicer.jpg" width="800" alt="示例图片" >
