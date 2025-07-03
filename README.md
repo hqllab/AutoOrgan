@@ -4,9 +4,9 @@
     <img src="resources/images/AutoOrgan.gif" width="800" alt="示例图片" >
 </p>
 📌 简介<br> 
-随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了 AutoOrgan, 一个专门用于 CT 影像中骨结构和器官的自动分割的深度学习框架 。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
+随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了AutoOrgan, 一个专门用于CT影像中骨结构和器官的自动分割的深度学习框架。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
 
-AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特且实用的优势。首先该框架在处理肋骨与椎骨等复杂解剖区域时，能够有效修复两者之间存在的缺损或连接断裂问题,如下图(b)所示，AutoOrgan可以在肋骨椎骨连接处生成高精度的分割图.
+AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特且实用的优势。首先该框架在处理肋骨与椎骨等复杂解剖区域时，能够有效修复两者之间存在的缺损或连接断裂问题,如下图(b)所示，AutoOrgan可以在肋骨椎骨连接处生成高精度的分割图。
 <p align="center">
     <img src="resources/images/rib_compare.png" width="800" alt="示例图片" >
 </p>
@@ -34,7 +34,7 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
     <td>1</td>
   </tr>
 
-  <tr>`
+  <tr>
     <td>椎骨</td>
     <td>2</td>
   </tr>
@@ -400,7 +400,6 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 
 </div>
 </details>
-</br>
 <details>
 <summary style="margin-left: 25px;">器官可分割部位</summary>
 <div style="margin-left: 25px;">
@@ -570,20 +569,20 @@ nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 ✅ 分割结果实时渲染展示，并可导出为标准 NIfTI 或 LabelMap 格式
 ✅ 支持 GPU 加速推理（可选）
 ✅ 基于 Python 和 Onnx 实现后端推理逻辑，与 3D Slicer 模块无缝集成。
-    插件安装和使用指南请参考 [AutoOrganSlicer安装步骤](resources/images/插件使用方法.pdf ) -> 待完善
+    插件安装和使用指南请参考 [AutoOrganSlicer安装步骤](resources/images/插件使用方法.pdf ) -> 待完善<br>
     [插件视频教程](https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing)
 
-🤝 贡献指南
+🤝 贡献指南<br>
 欢迎贡献代码、改进文档、提交 issue 或分享你的使用经验！
 请参考 CONTRIBUTING.md 获取详细说明。
   
-📞 联系方式
+📞 联系方式<br>
 如有任何疑问、合作意向或定制开发需求，请联系：
 
 📧 Email: vplus@163.com
 🌐 GitHub: https://github.com/hqllab/AutoOrgan
   
-❤️ 致谢
+❤️ 致谢<br>
 感谢以下开源项目对本项目的启发与支持：
 Wasserthal, J., Breit, H.-C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W., Heye, T., Boll, D., Cyriac, J., Yang, S., Bach, M., Segeroth, M., 2023. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. Radiology: Artificial Intelligence. https://doi.org/10.1148/ryai.230024
 
@@ -594,5 +593,5 @@ Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D.
 
 感谢所有参与测试和反馈的医生、研究人员和开发者。AutoOrgan 的诞生离不开你们的支持与鼓励！
 
-⚠️ 免责声明 ：本项目仅供学术研究和教学用途，不用于任何临床诊断或治疗决策。使用前请确保符合相关法规要求。 
+⚠️ 免责声明 ：<br>本项目仅供学术研究和教学用途，不用于任何临床诊断或治疗决策。使用前请确保符合相关法规要求。 
   
