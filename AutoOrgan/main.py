@@ -53,10 +53,12 @@ def entry_main(input_path,output_path,model_path,use_gpu):
     
     infer_result = infer(parameters_dict,config_dict,model_path,use_gpu)
     infer_array = infer_result.infer_data
+    
     image = sitk.GetImageFromArray(infer_array)
-    image.SetSpacing((ct_x_spacing,ct_y_spacing,ct_z_spacing))
-    image.SetOrigin(ct_image.GetOrigin())
-    image.SetDirection(ct_image.GetDirection())
+    image.CopyInformation(ct_image)
+    # image.SetSpacing((ct_x_spacing,ct_y_spacing,ct_z_spacing))
+    # image.SetOrigin(ct_image.GetOrigin())
+    # image.SetDirection(ct_image.GetDirection())
     sitk.WriteImage(image,output_path)
 
 def main_entry():
@@ -64,10 +66,8 @@ def main_entry():
 
     parser.add_argument('-i', type=str, required=True, help='input path')
     parser.add_argument('-o', type=str,  help='out path')
-    parser.add_argument('-m', type=str,  help='model path')
+    parser.add_argument('-m', type=str,  help='onnx model path')
     parser.add_argument('-g', action='store_true', help='use gpu')
 
     args = parser.parse_args()
     entry_main(args.i,args.o,args.m,args.g)
-    
-# entry_main(r"C:\Users\27321\Desktop\Patient_0048.nii.gz",r"C:\Users\27321\Desktop\out.nii.gz",r"C:\Users\27321\Desktop\checkpoint_final.onnx",True)
