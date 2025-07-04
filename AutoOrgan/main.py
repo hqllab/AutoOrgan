@@ -1,73 +1,94 @@
-import argparse
-import SimpleITK as sitk
-from munch import DefaultMunch
+import sys
+sys.path.append('/home/wangnannan/workdir/AutoOrgan/')
 
-from AutoOrgan.config import config_dict,labels_dict
-from AutoOrgan.backend_data import BackendImage
+import json
+import numpy as np
+import SimpleITK as sitk
+from pathlib import Path
+from munch import DefaultMunch
+from skimage.transform import resize
+
 from AutoOrgan.preprocess import preprocess
-from AutoOrgan.infer import run_infer_ONNX
-from AutoOrgan.postprocess import postprocess
+from AutoOrgan.infer import OnnxInfer
 from AutoOrgan.fixed import work
 
-def infer(receive_dict,config_dict,model_path,use_gpu):
-    receive_dict = DefaultMunch.fromDict(receive_dict)
-    
-    ct_data = receive_dict.InImage.CTImage.Data
-    ct_meta = receive_dict.InImage.CTImage.Meta 
-    ct_image = BackendImage(ct_data, ct_meta)
-    ct_image.flag = 'ct'
+class Config():
+    def __init__(self):
+        self.input_path = '/home/wangnannan/nnunet_dir/nnUNet_raw/Dataset105_TotalBone/imagesTr'
+        # self.input_path = '/home/wangnannan/nnunet_dir/nnUNet_raw/Dataset998_TotalRib/test_data'
+        self.output_path = '/home/wangnannan/nnunet_dir/nnUNet_raw/Dataset998_TotalRib/my_code_infer'
+        self.result_path = '/home/wangnannan/nnunet_dir/nnUNet_results/Dataset106_TotalBone/nnUNetTrainerNoMirroring__nnUNetPlans__3d_fullres'
+        # self.result_path = '/home/wangnannan/nnunet_dir/nnUNet_results/Dataset998_TotalRib/nnUNetTrainerNoMirroring__nnUNetPlans__3d_fullres'
+        self.use_gpu = True
         
-    classes_count = 73
-    ct_image,slicers,gaussian,ct_parameters_dict = preprocess(ct_image, config_dict)
-    ct_image = run_infer_ONNX(ct_image,slicers,gaussian,classes_count,model_path,use_gpu)
+        self.fold = '0'
+        self.model_name = 'model.onnx'
+        self.file_suffix = '*.nii.gz'
     
-    ct_image = postprocess(ct_image,ct_parameters_dict)
-    ct_image = work(ct_image,labels_dict)
-    
-    return ct_image
+    def update(self, args):
+        for k, v in vars(args).items():
+            if hasattr(self, k):
+                setattr(self, k, v)
 
-def entry_main(input_path,output_path,model_path,use_gpu):
-    ct_image = sitk.ReadImage(input_path)
-    ct_x_spacing,ct_y_spacing,ct_z_spacing = ct_image.GetSpacing()
-    ct_array = sitk.GetArrayFromImage(ct_image)     
-    ct_z,ct_y,ct_x = ct_array.shape   
-     
-    ct_bytes = ct_array.tobytes()
-    
-    parameters_dict = {
-        "InImage": {
-            "CTImage":{
-                "Data": ct_bytes,
-                "Meta": {
-                    "DataType":ct_array.dtype.descr[0][1],
-                    "PixelSize":{"X":ct_x_spacing,"Y":ct_y_spacing,"Z":ct_z_spacing},
-                    "Shape":{
-                        "X":ct_x,
-                        "Y":ct_y,
-                        "Z":ct_z
-                    }
-            }
-            }
-        }
-        }
-    
-    infer_result = infer(parameters_dict,config_dict,model_path,use_gpu)
-    infer_array = infer_result.infer_data
-    
-    image = sitk.GetImageFromArray(infer_array)
-    image.CopyInformation(ct_image)
-    # image.SetSpacing((ct_x_spacing,ct_y_spacing,ct_z_spacing))
-    # image.SetOrigin(ct_image.GetOrigin())
-    # image.SetDirection(ct_image.GetDirection())
-    sitk.WriteImage(image,output_path)
+class Predictor():
+    def __init__(self,config_class:Config):
+        self.config = config_class
+        
+        input_path = Path(self.config.input_path)
+        if input_path.is_dir():
+            self.infer_file_list = sorted(input_path.glob(self.config.file_suffix))[:]
+        else:
+            self.infer_file_list = [input_path]
+
+        self.result_path = Path(self.config.result_path)
+        with open(self.result_path / 'dataset.json') as f:
+            self.dataset_json_data = DefaultMunch.fromDict(json.load(f))
+        self.classes_count = len(self.dataset_json_data.labels)
+        
+        with open(self.result_path / 'plans.json') as f:
+            self.plans_json_data = DefaultMunch.fromDict(json.load(f))
+        
+        self.model_path = self.result_path / f'fold_{self.config.fold}' /self.config.model_name
+        self.output_path = Path(self.config.output_path)
+        
+        self.onnx_infer = OnnxInfer(self.classes_count,self.model_path,self.config.use_gpu)
+        
+    def run_infer(self):
+        for index in range(len(self.infer_file_list)): 
+            print(f'Run {index + 1} / {len(self.infer_file_list)} files, current file is {self.infer_file_list[index].name}')
+            
+            ct_image = sitk.ReadImage(self.infer_file_list[index])
+            ct_array = sitk.GetArrayFromImage(ct_image)     
+            spacing = ct_image.GetSpacing()
+            
+            ct_array,slicers,gaussian,ct_parameters_dict = preprocess(ct_array, spacing,self.plans_json_data)
+            ct_array = self.onnx_infer.new_run_infer_ONNX(ct_array,slicers,gaussian)
+            ct_array = self.postprocess(ct_array,ct_parameters_dict)
+            # ct_array = work(ct_array,labels_dict)
+            
+            image = sitk.GetImageFromArray(ct_array)
+            image.CopyInformation(ct_image)
+            sitk.WriteImage(image,self.output_path / self.infer_file_list[index].name)
+
+    def postprocess(self,image_data, parameters_dict):
+        slicer_revert_padding = parameters_dict.pad_bbox
+        crop_image_data = image_data[tuple([slice(None), *slicer_revert_padding])]
+        crop_image_data = np.argmax(crop_image_data,0)
+        
+        crop_zoom_image_data = resize(crop_image_data,parameters_dict.shape_after_crop,order=0)
+        
+        slicer = tuple([slice(*i) for i in parameters_dict.crop_bbox])
+        segmentation_reverted_cropping = np.zeros(parameters_dict.origin_shape,dtype=np.uint16)
+        segmentation_reverted_cropping[slicer] = crop_zoom_image_data
+        image_data = segmentation_reverted_cropping
+        
+        image_data = image_data.astype(np.uint16)
+        return image_data
 
 def main_entry():
-    parser = argparse.ArgumentParser(description="AutoOrgan")
+    config_class = Config()
+    my_infer = Predictor(config_class)
+    my_infer.run_infer()
 
-    parser.add_argument('-i', type=str, required=True, help='input path')
-    parser.add_argument('-o', type=str,  help='out path')
-    parser.add_argument('-m', type=str,  help='onnx model path')
-    parser.add_argument('-g', action='store_true', help='use gpu')
-
-    args = parser.parse_args()
-    entry_main(args.i,args.o,args.m,args.g)
+if __name__ == '__main__':
+    main_entry()
