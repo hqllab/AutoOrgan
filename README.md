@@ -11,7 +11,7 @@ AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特�
     <img src="resources/images/rib.png" width="800" alt="示例图片" >
 </p>
 
-此外，AutoOrgan 的训练数据集具有高度多样性，不仅涵盖了常规 CT 图像，还包括多种类型的增强型CT和PET/CT图像。这种多模态数据的支持使得AutoOrgan在面对不同成像条件和设备来源的数据时，依然能够保持良好的分割性能与泛化能力。如下图所示,左侧(a)为AutoOrgan的分割结果,右侧为另一个主流分割框架的结果.
+此外，AutoOrgan 的训练数据集具有高度多样性，不仅涵盖了常规 CT 图像，还包括多种类型的增强型CT和PET/CT图像。这种多模态数据的支持使得AutoOrgan在面对不同成像条件和设备来源的数据时，依然能够保持良好的分割性能与泛化能力。如下图所示,左侧(a)为AutoOrgan的分割结果,右侧(b)和(c)为两个主流分割框架的结果.
 <p align="center">
     <img src="resources/images/rib_compare.png" width="800" alt="示例图片" >
 </p>
@@ -449,64 +449,64 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
     <td>9</td>
   </tr>  
   <tr>
-    <td>lung_upper_lobe_right</td>
+    <td>右肺上叶(lung_upper_lobe_right)</td>
     <td>10</td>
   </tr>  
   <tr>
-    <td>lung_middle_lobe_right</td>
+    <td>右肺中叶(lung_middle_lobe_right)</td>
     <td>11</td>
   </tr>  
   <tr>
-    <td>lung_lower_lobe_right</td>
+    <td>右肺下叶(lung_lower_lobe_right)</td>
     <td>12</td>
   </tr>  
   <tr>
-    <td>esophagus</td>
+    <td>食管(esophagus)</td>
     <td>13</td>
   </tr>  
   <tr>
-    <td>trachea</td>
+    <td>气管(trachea)</td>
     <td>14</td>
   </tr>  
   <tr>
-    <td>thyroid_gland</td>
+    <td>甲状腺(thyroid_gland)</td>
     <td>15</td>
   </tr>                    
 
   <tr>
-    <td>small_bowel</td>
+    <td>小肠(small_bowel)</td>
     <td>16</td>
   </tr>    
   <tr>
-    <td>duodenum</td>
+    <td>十二指肠(duodenum)</td>
     <td>17</td>
   </tr>    
   <tr>
-    <td>colon</td>
+    <td>结肠(colon)</td>
     <td>18</td>
   </tr>    
   <tr>
-    <td>urinary_bladder</td>
+    <td>膀胱(urinary_bladder)</td>
     <td>19</td>
   </tr>    
   <tr>
-    <td>prostate</td>
+    <td>前列腺(prostate)</td>
     <td>20</td>
   </tr>    
   <tr>
-    <td>heart</td>
+    <td>心脏(heart)</td>
     <td>21</td>
   </tr>    
   <tr>
-    <td>aorta</td>
+    <td>主动脉(aorta)</td>
     <td>22</td>
   </tr>    
   <tr>
-    <td>brain</td>
+    <td>大脑(brain)</td>
     <td>23</td>
   </tr>                  
   <tr>
-    <td>spinal_cord</td>
+    <td>脊髓(spinal_cord)</td>
     <td>24</td>
   </tr>   
 
@@ -532,7 +532,56 @@ CUDA_VISIBLE_DEVICES=GPU_ID nnUNetv2_predict -i INPUT_FOLDER  -o  OUTPUT_FOLDER 
 GPU_ID是指你使用的GPU序号
 INPUT_FOLDER是待预测的CT图像文件夹
 OUTPUT_FOLDER是预测结果输出文件夹
-TASK_ID是任务ID
+TASK_ID是任务ID. 
+</details>
+<details>
+<summary style="margin-left: 25px;">Task ID对照表</summary>
+<div style="margin-left: 25px;">
+
+<table>
+  <tr>
+    <th>任务名称(Task Name)</th>
+    <th>任务Task ID(Task ID)</th>
+  </tr>
+
+  <tr>
+    <td>全身骨骼(The overall skeleton of the whole body)</td>
+    <td>106</td>
+  </tr>
+  <tr>
+    <td>细分椎骨(Vertebrae subdivision)</td>
+    <td>108</td>
+  </tr>
+  <tr>
+    <td>细分肋骨(Rib subdivision)</td>
+    <td>998</td>
+  </tr>
+  <tr>
+    <td>细分上肢骨(Upper limb subdivision)</td>
+    <td>113</td>
+  </tr>    
+  <tr>
+    <td>细分盆骨(Hip subdivision)</td>
+    <td>114</td>
+  </tr>    
+
+  <tr>
+    <td>细分下肢骨(Lower limb subdivision)</td>
+    <td>112</td>
+  </tr> 
+
+  <tr>
+    <td>器官(Organ part)</td>
+    <td>999</td>
+  </tr> 
+
+  </tr>
+
+</table>
+
+</div>
+</details>
+
 TrainerName是训练器(在我们的模型中默认使用nnUNetTrainerNoMirroring)
 f是折数(在我们的模型中默认使用使用第0折)
 --c表示跳过已存在的结果.
