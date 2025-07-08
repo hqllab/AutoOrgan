@@ -15,382 +15,382 @@ AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特�
 <p align="center">
     <img src="resources/images/rib_compare.png" width="800" alt="示例图片" >
 </p>
-AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考映射文件labels.json文件，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
+AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考下面列出的表格，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
 </br>
 <details>
-<summary style="margin-left: 25px;">骨骼可分割部位</summary>
+<summary style="margin-left: 25px;">骨骼可分割部位(Bone part)</summary>
 <div style="margin-left: 25px;">
 
 <table>
   <tr>
     <th></th>
-    <th>名称</th>
-    <th>标签值</th>
+    <th>名称(Name)</th>
+    <th>标签值(Label value)</th>
   </tr>
 
   <tr>
-    <td rowspan="6">全身总体骨骼</td>
-    <td>颅骨</td>
+    <td rowspan="6">全身骨骼(The overall skeleton of the whole body)</td>
+    <td>颅骨(Skull)</td>
     <td>1</td>
   </tr>
 
   <tr>
-    <td>椎骨</td>
+    <td>椎骨(Vertebrae)</td>
     <td>2</td>
   </tr>
 
   <tr>
-    <td>肋骨</td>
+    <td>肋骨(Rib)</td>
     <td>3</td>
   </tr>
   <tr>
-    <td>上肢</td>
+    <td>上肢(Upper limb)</td>
     <td>4</td>
   </tr>
   <tr>
-    <td>盆骨下肢</td>
+    <td>盆骨(Hip)</td>
     <td>5</td>
   </tr>    
   <tr>
-    <td>下肢</td>
+    <td>下肢(Lower limb)</td>
     <td>6</td>
   </tr>    
 
   <tr>
-    <td rowspan="24">椎骨</td>
-    <td>vertebrae_C1</td>
+    <td rowspan="24">细分椎骨(Vertebrae subdivision)</td>
+    <td>椎骨C1(vertebrae_C1)</td>
     <td>1</td>
   </tr>
   <tr>
-    <td>vertebrae_C2</td>
+    <td>椎骨C2(vertebrae_C2)</td>
     <td>2</td>
   </tr>
   <tr>
-    <td>vertebrae_C3</td>
+    <td>椎骨C3(vertebrae_C3)</td>
     <td>3</td>
   </tr>
   <tr>
-    <td>vertebrae_C4</td>
+    <td>椎骨C4(vertebrae_C4)</td>
     <td>4</td>
   </tr>
   <tr>
-    <td>vertebrae_C5</td>
+    <td>椎骨C5(vertebrae_C5)</td>
     <td>5</td>
   </tr>    
   <tr>
-    <td>vertebrae_C6</td>
+    <td>椎骨C6(vertebrae_C6)</td>
     <td>6</td>
   </tr>    
   <tr>
-    <td>vertebrae_C7</td>
+    <td>椎骨C7(vertebrae_C7)</td>
     <td>7</td>
   </tr>  
   <tr>
-    <td>vertebrae_T1</td>
+    <td>椎骨T1(vertebrae_T1)</td>
     <td>8</td>
   </tr>  
   <tr>
-    <td>vertebrae_T2</td>
+    <td>椎骨T2(vertebrae_T2)</td>
     <td>9</td>
   </tr>  
   <tr>
-    <td>vertebrae_T3</td>
+    <td>椎骨T3(vertebrae_T3)</td>
     <td>10</td>
   </tr>  
   <tr>
-    <td>vertebrae_T4</td>
+    <td>椎骨T4(vertebrae_T4)</td>
     <td>11</td>
   </tr>  
   <tr>
-    <td>vertebrae_T5</td>
+    <td>椎骨T5(vertebrae_T5)</td>
     <td>12</td>
   </tr>  
   <tr>
-    <td>vertebrae_T6</td>
+    <td>椎骨T6(vertebrae_T6)</td>
     <td>13</td>
   </tr>  
   <tr>
-    <td>vertebrae_T7</td>
+    <td>椎骨T7(vertebrae_T7)</td>
     <td>14</td>
   </tr>  
   <tr>
-    <td>vertebrae_T8</td>
+    <td>椎骨T8(vertebrae_T8)</td>
     <td>15</td>
   </tr>                    
 
   <tr>
-    <td>vertebrae_T9</td>
+    <td>椎骨T9(vertebrae_T9)</td>
     <td>16</td>
   </tr>    
   <tr>
-    <td>vertebrae_T10</td>
+    <td>椎骨T10(vertebrae_T10)</td>
     <td>17</td>
   </tr>    
   <tr>
-    <td>vertebrae_11</td>
+    <td>椎骨T11(vertebrae_T11)</td>
     <td>18</td>
   </tr>    
   <tr>
-    <td>vertebrae_T12</td>
+    <td>椎骨T12(vertebrae_T12)</td>
     <td>19</td>
   </tr>    
   <tr>
-    <td>vertebrae_L1</td>
+    <td>椎骨L1(vertebrae_L1)</td>
     <td>20</td>
   </tr>    
   <tr>
-    <td>vertebrae_L2</td>
+    <td>椎骨L2(vertebrae_L2)</td>
     <td>21</td>
   </tr>    
   <tr>
-    <td>vertebrae_L3</td>
+    <td>椎骨L3(vertebrae_L3)</td>
     <td>22</td>
   </tr>    
   <tr>
-    <td>vertebrae_L4</td>
+    <td>椎骨L4(vertebrae_L4)</td>
     <td>23</td>
   </tr>                  
   <tr>
-    <td>vertebrae_L5</td>
+    <td>椎骨L5(vertebrae_L5)</td>
     <td>24</td>
   </tr>   
 
   <tr>
-    <td rowspan="24">肋骨</td>
-    <td>rib_left_1</td>
+    <td rowspan="24">细分肋骨(Rib subdivision)</td>
+    <td>左肋骨1(rib_left_1)</td>
     <td>1</td>
   </tr>
 
   <tr>
-    <td>rib_right_1</td>
+    <td>右肋骨1(rib_right_1)</td>
     <td>2</td>
   </tr>
   <tr>
-    <td>rib_left_2</td>
+    <td>左肋骨2(rib_left_2)</td>
     <td>3</td>
   </tr>
   <tr>
-    <td>rib_right_2</td>
+    <td>右肋骨2(rib_right_2)</td>
     <td>4</td>
   </tr>
   <tr>
-    <td>rib_left_3</td>
+    <td>左肋骨3(rib_left_3)</td>
     <td>5</td>
   </tr>    
   <tr>
-    <td>rib_right_3</td>
+    <td>右肋骨3(rib_right_3)</td>
     <td>6</td>
   </tr>    
   <tr>
-    <td>rib_left_4</td>
+    <td>左肋骨4(rib_left_4)</td>
     <td>7</td>
   </tr>  
   <tr>
-    <td>rib_right_4</td>
+    <td>右肋骨4(rib_right_4)</td>
     <td>8</td>
   </tr>  
   <tr>
-    <td>rib_left_5</td>
+    <td>左肋骨5(rib_left_5)</td>
     <td>9</td>
   </tr>  
   <tr>
-    <td>rib_right_5</td>
+    <td>右肋骨5(rib_right_5)</td>
     <td>10</td>
   </tr>  
   <tr>
-    <td>rib_left_6</td>
+    <td>左肋骨6(rib_left_6)</td>
     <td>11</td>
   </tr>  
   <tr>
-    <td>rib_right_6</td>
+    <td>右肋骨6(rib_right_6)</td>
     <td>12</td>
   </tr>  
   <tr>
-    <td>rib_left_7</td>
+    <td>左肋骨7(rib_left_7)</td>
     <td>13</td>
   </tr>  
   <tr>
-    <td>rib_right_7</td>
+    <td>右肋骨7(rib_right_7)</td>
     <td>14</td>
   </tr>  
   <tr>
-    <td>rib_left_8</td>
+    <td>左肋骨8(rib_left_8)</td>
     <td>15</td>
   </tr>                    
 
   <tr>
-    <td>rib_right_8</td>
+    <td>右肋骨8(rib_right_8)</td>
     <td>16</td>
   </tr>    
   <tr>
-    <td>rib_left_9</td>
+    <td>左肋骨9(rib_left_9)</td>
     <td>17</td>
   </tr>    
   <tr>
-    <td>rib_right_9</td>
+    <td>右肋骨9(rib_right_9)</td>
     <td>18</td>
   </tr>    
   <tr>
-    <td>rib_left_10</td>
+    <td>左肋骨10(rib_left_10)</td>
     <td>19</td>
   </tr>    
   <tr>
-    <td>rib_right_10</td>
+    <td>右肋骨10(rib_right_10)</td>
     <td>20</td>
   </tr>    
   <tr>
-    <td>rib_left_11</td>
+    <td>左肋骨11(rib_left_11)</td>
     <td>21</td>
   </tr>    
   <tr>
-    <td>rib_right_11</td>
+    <td>右肋骨12(rib_right_11)</td>
     <td>22</td>
   </tr>    
   <tr>
-    <td>rib_left_12</td>
+    <td>左肋骨12(rib_left_12)</td>
     <td>23</td>
   </tr>                  
   <tr>
-    <td>rib_right_12</td>
+    <td>右肋骨12(rib_right_12)</td>
     <td>24</td>
   </tr>   
 
   <tr>
-    <td rowspan="16">下肢骨</td>
-    <td>humerus_left</td>
+    <td rowspan="16">细分上肢骨(Upper limb subdivision)</td>
+    <td>左肱骨(humerus_left)</td>
     <td>1</td>
   </tr>
   <tr>
-    <td>humerus_right</td>
+    <td>右肱骨(humerus_right)</td>
     <td>2</td>
   </tr>
   <tr>
-    <td>radius_left</td>
+    <td>左桡骨(radius_left)</td>
     <td>3</td>
   </tr>
   <tr>
-    <td>radius_right</td>
+    <td>右桡骨(radius_right)</td>
     <td>4</td>
   </tr>
   <tr>
-    <td>ulna_left</td>
+    <td>左尺骨(ulna_left)</td>
     <td>5</td>
   </tr>    
   <tr>
-    <td>ulna_right</td>
+    <td>右尺骨(ulna_right)</td>
     <td>6</td>
   </tr>    
   <tr>
-    <td>carpal_left</td>
+    <td>左腕关节(carpal_left)</td>
     <td>7</td>
   </tr>  
   <tr>
-    <td>carpal_right</td>
+    <td>右腕关节(carpal_right)</td>
     <td>8</td>
   </tr>  
   <tr>
-    <td>metacarpal_left</td>
+    <td>左掌骨(metacarpal_left)</td>
     <td>9</td>
   </tr>  
   <tr>
-    <td>metacarpal_right</td>
+    <td>右掌骨(metacarpal_right)</td>
     <td>10</td>
   </tr>  
   <tr>
-    <td>phalanges_hand_left</td>
+    <td>左指骨(phalanges_hand_left)</td>
     <td>11</td>
   </tr>  
   <tr>
-    <td>phalanges_hand_right</td>
+    <td>右指骨(phalanges_hand_right)</td>
     <td>12</td>
   </tr>  
   <tr>
-    <td>clavicula_left</td>
+    <td>左锁骨(clavicula_left)</td>
     <td>13</td>
   </tr>  
   <tr>
-    <td>clavicula_right</td>
+    <td>右锁骨(clavicula_right)</td>
     <td>14</td>
   </tr>  
   <tr>
-    <td>scapula_left</td>
+    <td>左肩胛骨(scapula_left)</td>
     <td>15</td>
   </tr>                    
 
   <tr>
-    <td>scapula_right</td>
+    <td>右肩胛骨(scapula_right)</td>
     <td>16</td>
   </tr>    
 
   <tr>
-    <td rowspan="3">盆骨</td>
-    <td>hip_left</td>
+    <td rowspan="3">细分盆骨(Hip subdivision)</td>
+    <td>左髋骨(hip_left)</td>
     <td>1</td>
   </tr>
   <tr>
-    <td>hip_right</td>
+    <td>右髋骨(hip_right)</td>
     <td>2</td>
   </tr>
   <tr>
-    <td>sacrum</td>
+    <td>骶骨(sacrum)</td>
     <td>3</td>
   </tr>
 
   <tr>
-    <td rowspan="14">下肢骨</td>
-    <td>femur_left</td>
+    <td rowspan="14">细分下肢骨(Lower limb subdivision)</td>
+    <td>左股骨(femur_left)</td>
     <td>1</td>
   </tr>
   <tr>
-    <td>femur_right</td>
+    <td>右股骨(femur_right)</td>
     <td>2</td>
   </tr>
   <tr>
-    <td>patella_left</td>
+    <td>左膝盖骨(patella_left)</td>
     <td>3</td>
   </tr>
   <tr>
-    <td>patella_right</td>
+    <td>右膝盖骨(patella_right)</td>
     <td>4</td>
   </tr>
   <tr>
-    <td>tibia_left</td>
+    <td>左胫骨(tibia_left)</td>
     <td>5</td>
   </tr>    
   <tr>
-    <td>tibia_right</td>
+    <td>右胫骨(tibia_right)</td>
     <td>6</td>
   </tr>    
   <tr>
-    <td>fibula_left</td>
+    <td>左腓骨(fibula_left)</td>
     <td>7</td>
   </tr>  
   <tr>
-    <td>fibula_right</td>
+    <td>右腓骨(fibula_right)</td>
     <td>8</td>
   </tr>  
   <tr>
-    <td>tarsal_left</td>
+    <td>左跗骨(tarsal_left)</td>
     <td>9</td>
   </tr>  
   <tr>
-    <td>tarsal_right</td>
+    <td>右跗骨(tarsal_right)</td>
     <td>10</td>
   </tr>  
   <tr>
-    <td>metatarsal_left</td>
+    <td>左跖骨(metatarsal_left)</td>
     <td>11</td>
   </tr>  
   <tr>
-    <td>metatarsal_right</td>
+    <td>右跖骨(metatarsal_right)</td>
     <td>12</td>
   </tr>  
   <tr>
-    <td>phalanges_feet_left</td>
+    <td>左脚趾骨(phalanges_feet_left)</td>
     <td>13</td>
   </tr>  
   <tr>
-    <td>phalanges_feet_right</td>
+    <td>右脚趾骨(phalanges_feet_right)</td>
     <td>14</td>
   </tr>  
 
@@ -401,51 +401,51 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 </div>
 </details>
 <details>
-<summary style="margin-left: 25px;">器官可分割部位</summary>
+<summary style="margin-left: 25px;">器官可分割部位(Organ part)</summary>
 <div style="margin-left: 25px;">
 
 <table>
   <tr>
     <th></th>
-    <th>名称</th>
-    <th>标签值</th>
+    <th>名称(Name)</th>
+    <th>标签值(Label value)</th>
   </tr>
 
   <tr>
-    <td rowspan="24">器官</td>
-    <td>spleen</td>
+    <td rowspan="24">器官(Organ)</td>
+    <td>脾脏(spleen)</td>
     <td>1</td>
   </tr>
   <tr>
-    <td>kidney_right</td>
+    <td>右肾脏(kidney_right)</td>
     <td>2</td>
   </tr>
   <tr>
-    <td>kidney_left</td>
+    <td>左肾脏(kidney_left)</td>
     <td>3</td>
   </tr>
   <tr>
-    <td>gallbladder</td>
+    <td>胆囊(gallbladder)</td>
     <td>4</td>
   </tr>
   <tr>
-    <td>liver</td>
+    <td>肝脏(liver)</td>
     <td>5</td>
   </tr>    
   <tr>
-    <td>stomach</td>
+    <td>胃(stomach)</td>
     <td>6</td>
   </tr>    
   <tr>
-    <td>pancreas</td>
+    <td>胰腺(pancreas)</td>
     <td>7</td>
   </tr>  
   <tr>
-    <td>lung_upper_lobe_left</td>
+    <td>左肺上叶(lung_upper_lobe_left)</td>
     <td>8</td>
   </tr>  
   <tr>
-    <td>lung_lower_lobe_left</td>
+    <td>左肺下叶(lung_lower_lobe_left)</td>
     <td>9</td>
   </tr>  
   <tr>
@@ -521,7 +521,7 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 ### 1. 配置
 我们模型的使用基于nnUNet框架,请参考下面的链接安装并配置nnUnet [nnUnet安装步骤](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
 ### 2. 推理
-请填写👉[调查问卷](https://www.vplustech.com/AutoOrgan-registration ),你将会在24h内收到回复, 然后请下载官方提供的预训练模型文件并解压至nnUNet_results目录。
+请填写👉[注册信息](https://www.vplustech.com/AutoOrgan-registration ),你将会在24h内收到回复, 然后请下载官方提供的预训练模型文件并解压至nnUNet_results目录。
 请注意: **模型只允许被使用在非商业用途**.
   
 在命令行中输入命令进行推理
@@ -564,24 +564,23 @@ nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 </p>
 此插件的主要功能如下：
   
-✅ 支持多种医学图像格式（NIfTI、DICOM、NRRD 等  
-✅ 可扩展性强，支持加载自定义模型与标签配置文件（JSON）
-✅ 分割结果实时渲染展示，并可导出为标准 NIfTI 或 LabelMap 格式
-✅ 支持 GPU 加速推理（可选）
-✅ 基于 Python 和 Onnx 实现后端推理逻辑，与 3D Slicer 模块无缝集成。
+✅ 支持多种医学图像格式（NIfTI、DICOM、NRRD 等<br>
+✅ 可扩展性强，支持加载自定义模型与标签配置文件<br>
+✅ 分割结果实时渲染展示，并可导出为标准 NIfTI 或 LabelMap 格式<br>
+✅ 支持 GPU 加速推理（可选）<br>
+✅ 基于 Python 和 Onnx 实现后端推理逻辑，与 3D Slicer 模块无缝集成<br>
     插件安装和使用指南请参考 [AutoOrganSlicer安装步骤](resources/images/插件使用方法.pdf ) -> 待完善<br>
     [插件视频教程](https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing)
 
 🤝 贡献指南<br>
 欢迎贡献代码、改进文档、提交 issue 或分享你的使用经验！
-请参考 CONTRIBUTING.md 获取详细说明。
   
 📞 联系方式<br>
 如有任何疑问、合作意向或定制开发需求，请联系：
 
-📧 Email: vplus@163.com
+📧 Email: autoorgan@vplustech.com
 🌐 GitHub: https://github.com/hqllab/AutoOrgan
-  
+
 ❤️ 致谢<br>
 感谢以下开源项目对本项目的启发与支持：
 Wasserthal, J., Breit, H.-C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W., Heye, T., Boll, D., Cyriac, J., Yang, S., Bach, M., Segeroth, M., 2023. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. Radiology: Artificial Intelligence. https://doi.org/10.1148/ryai.230024
