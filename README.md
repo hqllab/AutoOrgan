@@ -8,12 +8,12 @@
 
 AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特且实用的优势。首先该框架在处理肋骨与椎骨等复杂解剖区域时，能够有效修复两者之间存在的缺损或连接断裂问题,如下图(b)所示，AutoOrgan可以在肋骨椎骨连接处生成高精度的分割图。
 <p align="center">
-    <img src="resources/images/rib_compare.png" width="800" alt="示例图片" >
+    <img src="resources/images/rib.png" width="800" alt="示例图片" >
 </p>
 
 此外，AutoOrgan 的训练数据集具有高度多样性，不仅涵盖了常规 CT 图像，还包括多种类型的增强型CT和PET/CT图像。这种多模态数据的支持使得AutoOrgan在面对不同成像条件和设备来源的数据时，依然能够保持良好的分割性能与泛化能力。如下图所示,左侧(a)为AutoOrgan的分割结果,右侧为另一个主流分割框架的结果.
 <p align="center">
-    <img src="resources/images/rib_image.png" width="800" alt="示例图片" >
+    <img src="resources/images/rib_compare.png" width="800" alt="示例图片" >
 </p>
 AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考映射文件labels.json文件，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
 </br>

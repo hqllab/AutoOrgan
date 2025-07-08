@@ -262,8 +262,13 @@ def padding(image, patch_size):
     pad_list = np.array(pad_list).ravel().tolist()
     return result_array, slicer, pad_list
 
-def preprocess(data,original_spacing,plans_dict):
+def preprocess(image,config_dict):
+    
+    plans_dict = DefaultMunch.fromDict(config_dict)
+    
     parameters_dict = DefaultMunch()
+    
+    data = image.data # z,y,x
     parameters_dict.origin_shape = data.shape
     
     cropped_data,crop_bbox,crop_list = crop_to_nonzero(data) 
@@ -274,6 +279,7 @@ def preprocess(data,original_spacing,plans_dict):
     cropped_normed_data = ct_znorm(cropped_data,plans_dict.foreground_intensity_properties_per_channel)
     
     target_spacing = plans_dict.original_median_spacing_after_transp
+    original_spacing = (abs(image.meta_dict.PixelSize.Z),image.meta_dict.PixelSize.Y,image.meta_dict.PixelSize.X)
     new_shape = compute_new_shape(cropped_normed_data.shape, original_spacing, target_spacing)
     
     order = plans_dict.configurations['3d_fullres'].resampling_fn_probabilities_kwargs.order
@@ -293,4 +299,6 @@ def preprocess(data,original_spacing,plans_dict):
     parameters_dict.patch_size = patch_size
     parameters_dict.shape_after_crop_resample_pad = cropped_normed_resampled_patched_data.shape
     
-    return cropped_normed_resampled_patched_data,slicers,gaussian,parameters_dict
+    image.data = cropped_normed_resampled_patched_data
+    
+    return image,slicers,gaussian,parameters_dict
