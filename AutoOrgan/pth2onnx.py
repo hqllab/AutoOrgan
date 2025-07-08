@@ -150,8 +150,8 @@ def _export_onnx_model(input_path,output_path,batch_size,folds='0',test_accuracy
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="nnUnetv2 pth model to onnx")
 
-    parser.add_argument('-input_path', type=str,help='', default='/home/wangnannan/nnunet_dir/nnUNet_results/Dataset106_TotalBone/nnUNetTrainerNoMirroring__nnUNetPlans__3d_fullres')
-    parser.add_argument('-output_path', type=str,default='/home/wangnannan/nnunet_dir/nnUNet_results/Dataset106_TotalBone/nnUNetTrainerNoMirroring__nnUNetPlans__3d_fullres/fold_0/model.onnx')
+    parser.add_argument('-input_path', type=str,help='', default='')
+    parser.add_argument('-output_path', type=str,default='')
     parser.add_argument('-batch_size', type=int, default=1)
     parser.add_argument('-folds', type=str, default='0')
 

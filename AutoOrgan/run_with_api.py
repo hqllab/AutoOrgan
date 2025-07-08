@@ -4,9 +4,9 @@ import torch
 import inspect
 import importlib
 import multiprocessing
-
 import numpy as np
 import SimpleITK as sitk
+from munch import Munch
 from scipy import ndimage
 from pathlib import Path
 from joblib import Parallel, delayed
@@ -152,6 +152,11 @@ def run_segment(config_dict):
 
 if __name__ == '__main__':
     
-    config_dict = {}
-    
+    config_dict = Munch()
+    config_dict.device = 'cuda:0'
+    config_dict.use_cpus = 4
+    config_dict.input_folder = ''
+    config_dict.output_folder = ''
+    config_dict.model_folder = ''
+    config_dict.temporary_folder = ''
     run_segment(config_dict)

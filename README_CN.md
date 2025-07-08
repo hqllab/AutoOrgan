@@ -3,20 +3,19 @@
 <p align="center">
     <img src="resources/images/AutoOrgan.gif" width="800" alt="示例图片" >
 </p>
-📌 Brief introduction<br> 
-With the rapid growth of medical imaging data volume, manual annotation has become increasingly time-consuming and error-prone.To address this issue, we developed AutoOrgan, a deep learning framework specifically designed for the automatic segmentation of bone structures and organs in CT images.This framework combines the best practices of modern semantic segmentation models and medical image processing, and is capable of efficiently and accurately recognizing and segmenting the bones of multiple parts of the body.
+📌 简介<br> 
+随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了AutoOrgan, 一个专门用于CT影像中骨结构和器官的自动分割的深度学习框架。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
 
-Compared with the current mainstream medical image segmentation models, AutoOrgan has several unique and practical advantages.
-Firstly, when dealing with complex anatomical regions such as ribs and vertebrae, this framework can effectively repair the defects or connection fractures existing between the two, as shown in Figure (b) below. AutoOrgan can generate high-precision segmentation maps at the connection points of ribs and vertebrae.
+AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特且实用的优势。首先该框架在处理肋骨与椎骨等复杂解剖区域时，能够有效修复两者之间存在的缺损或连接断裂问题,如下图(b)所示，AutoOrgan可以在肋骨椎骨连接处生成高精度的分割图。
 <p align="center">
-    <img src="resources/images/rib.png" width="800" alt="image" >
+    <img src="resources/images/rib.png" width="800" alt="示例图片" >
 </p>
 
-In addition, the training dataset of AutoOrgan is highly diverse, covering not only conventional CT images but also various types of enhanced CT and PET/CT images.The support of this multimodal data enables AutoOrgan to maintain excellent segmentation performance and generalization ability when dealing with data from different imaging conditions and device sources.As shown in the following figure, the left (a) is the segmentation result of AutoOrgan, and the right (b) and (c) are the results of the two mainstream segmentation frameworks.
+此外，AutoOrgan 的训练数据集具有高度多样性，不仅涵盖了常规 CT 图像，还包括多种类型的增强型CT和PET/CT图像。这种多模态数据的支持使得AutoOrgan在面对不同成像条件和设备来源的数据时，依然能够保持良好的分割性能与泛化能力。如下图所示,左侧(a)为AutoOrgan的分割结果,右侧(b)和(c)为两个主流分割框架的结果.
 <p align="center">
-    <img src="resources/images/rib_compare.png" width="800" alt="image" >
+    <img src="resources/images/rib_compare.png" width="800" alt="示例图片" >
 </p>
-AutoOrgan supports precise segmentation of various common bone structures (such as the skull, spine, ribs, pelvis, long bones of the limbs, etc.) and organ structures (such as the brain, heart, lungs, kidneys, etc.). For specific separable parts, please refer to the table listed below. It also provides a one-stop solution from data preprocessing, model inference to post-processing of results.Whether in scientific research or industrial applications, AutoOrgan can help you quickly achieve high-quality segmentation tasks.
+AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、四肢长骨等）和器官结构（例如大脑、心脏、肺部、肾脏等）的精确分割，具体的可分割部位，请参考请参考下面列出的表格，并提供从数据预处理、模型推理到结果后处理的一站式解决方案。无论是科研还是工业应用，AutoOrgan都能帮助你快速实现高质量的分割任务。
 </br>
 <details>
 <summary style="margin-left: 25px;">骨骼可分割部位(Bone part)</summary>
@@ -518,25 +517,25 @@ AutoOrgan supports precise segmentation of various common bone structures (such 
 </div>
 </details>
 
-📦 Usage process
-### 1. Configuration 
-The use of our model is based on the nnUNet framework. Please refer to the link below to install and configure nnUnet [nnUnet install guidance](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
-### 2. Inference 
-Please fill in👉[registration information](https://www.vplustech.com/AutoOrgan-registration ),You will receive a reply within 24 hours. Then please download the pre-trained model file provided by the official and extract it to the nnUNet_results directory.
-Please note: **The model is only permitted to be used for non-commercial purposes.**
+📦 使用流程
+### 1. 配置
+我们模型的使用基于nnUNet框架,请参考下面的链接安装并配置nnUnet [nnUnet安装步骤](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
+### 2. 推理
+请填写👉[注册信息](https://www.vplustech.com/AutoOrgan-registration ),你将会在24h内收到回复, 然后请下载官方提供的预训练模型文件并解压至nnUNet_results目录。
+请注意: **模型只允许被使用在非商业用途**.
   
-Enter commands in the command line for reasoning
+在命令行中输入命令进行推理
 ```sh
 CUDA_VISIBLE_DEVICES=GPU_ID nnUNetv2_predict -i INPUT_FOLDER  -o  OUTPUT_FOLDER  -d TASK_ID  -tr TrainerName  -f 0  -c 3d_fullres  --c -part_id X -num_parts Y
 ```
-Among them:
-"GPU_ID" refers to the serial number of the GPU you are using
-INPUT_FOLDER is the folder of CT images to be predicted
-OUTPUT_FOLDER is the folder for outputting the prediction results
-TASK_ID is the task ID.
+其中:
+GPU_ID是指你使用的GPU序号
+INPUT_FOLDER是待预测的CT图像文件夹
+OUTPUT_FOLDER是预测结果输出文件夹
+TASK_ID是任务ID. 
 </details>
 <details>
-<summary style="margin-left: 25px;">Task ID comparison table</summary>
+<summary style="margin-left: 25px;">Task ID对照表</summary>
 <div style="margin-left: 25px;">
 
 <table>
@@ -583,56 +582,56 @@ TASK_ID is the task ID.
 </div>
 </details>
 
-TrainerName is the trainer (nnUNetTrainerNoMirroring is used by default in our model)
-f is the number of folds (in our model, the 0th fold is used by default)
---c indicates skipping an existing result.
-**Optional:** -part_id X -num_parts Y. It indicates that the inference dataset is divided into Y parts. Currently, the XTH part is being inferred (this strategy will consume more memory and resources, but it is faster).
+TrainerName是训练器(在我们的模型中默认使用nnUNetTrainerNoMirroring)
+f是折数(在我们的模型中默认使用使用第0折)
+--c表示跳过已存在的结果.
+**可选:** -part_id X -num_parts Y 表示将推理数据集分成Y份,目前推理的是第X份(此策略这会消耗更多的内存和资源,但更快)
 ```sh
 CUDA_VISIBLE_DEVICES=4 nnUNetv2_predict -i INPUT_FOLDER  -o  OUTPUT_FOLDER  -d TASK_ID  -tr TrainerName  -f 0  -c 3d_fullres  --c -part_id 0 -num_parts 2
 CUDA_VISIBLE_DEVICES=5 nnUNetv2_predict -i INPUT_FOLDER  -o  OUTPUT_FOLDER  -d TASK_ID  -tr TrainerName  -f 0  -c 3d_fullres  --c -part_id 1 -num_parts 2
 ```
   
-Specifically, if you want to perform the rib segmentation task, you need to execute the following command:
+具体来说, 如果要执行肋骨分割任务,你需要执行下面的命令
 ```sh
 CUDA_VISIBLE_DEVICES=0 nnUNetv2_predict -i /home/data/ct -o /home/data/ct_rib_result -d 888 -tr nnUNetTrainerNoMirroring -f 0 -c 3d_fullres --c 
 ```
-### 3. Training
-   If you wish to retrain the model on our dataset, please first apply for our highly labeled dataset via email, and then follow the steps below for training::
-   1. Download the dataset in the link
-   2. Unzip the dataset to the nnUNet_raw directory and set up the corresponding file directory and dataset.json file
-   3. Run the preprocessing and training commands in sequence on the command line
+### 3. 训练
+   如果你想在我们的数据集上重新训练模型请, 请先通过邮件申请我们的精标注数据集, 然后按照以下步骤进行训练:
+   1. 下载链接中的数据集
+   2. 将数据集解压到nnUNet_raw目录下,并设置好对应的文件目录和dataset.json文件
+   3. 依次在命令行运行预处理、训练命令
 ```
 nnUNetv2_plan_and_preprocess -d <your_dataset_id> -pl ExperimentPlanner -c 3d_fullres
 ```
 ```
 nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 ```
-### 4. 3d slicer plugin:
-   Our team independently developed an intelligent medical image segmentation plugin based on AutoOrgan and 3D Slicer - AutoOrganSlicer, dedicated to providing doctors and researchers with an efficient, accurate and user-friendly 3D image segmentation tool.
+### 4. 3d slicer插件功能：
+   我们团队独立开发了一款基于AutoOrgan和3D Slicer的医学图像智能分割插件 —— AutoOrganSlicer，专注于为医生和研究人员提供高效、精准、易用的三维影像分割工具。
 <p align="center">
     <img src="resources/images/3d slicer.jpg" width="800" alt="示例图片" >
 </p>
-The main functions of this plugin are as follows:：
+此插件的主要功能如下：
   
-✅ Supports multiple medical image formats (NIfTI, DICOM, NRRD, etc.)<br>
-✅ Highly extensible and supports loading custom model and tag configuration files<br>
-✅ The segmentation results are rendered and displayed in real time and can be exported in standard NIfTI or LabelMap format<br>
-✅ Supports GPU-accelerated inference (optional)<br>
-✅ Implements back-end inference logic based on Python and Onnx, seamlessly integrated with the 3D Slicer module<br>
-    Please refer to the guide for plugin installation and usage [AutoOrganSlicer installation steps](resources/images/插件使用方法.pdf ) -> 待完善<br>
-    [Plugin video tutorial](https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing)
+✅ 支持多种医学图像格式（NIfTI、DICOM、NRRD 等<br>
+✅ 可扩展性强，支持加载自定义模型与标签配置文件<br>
+✅ 分割结果实时渲染展示，并可导出为标准 NIfTI 或 LabelMap 格式<br>
+✅ 支持 GPU 加速推理（可选）<br>
+✅ 基于 Python 和 Onnx 实现后端推理逻辑，与 3D Slicer 模块无缝集成<br>
+    插件安装和使用指南请参考 [AutoOrganSlicer安装步骤](resources/images/插件使用方法.pdf ) -> 待完善<br>
+    [插件视频教程](https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing)
 
-🤝 Contribution Guide<br>
-Welcome to contribute code, improve documentation, submit issues or share your usage experiences!
+🤝 贡献指南<br>
+欢迎贡献代码、改进文档、提交 issue 或分享你的使用经验！
   
-📞 Contact information<br>
-If you have any questions, cooperation intentions or custom development needs, please contact:
+📞 联系方式<br>
+如有任何疑问、合作意向或定制开发需求，请联系：
 
 📧 Email: autoorgan@vplustech.com
 🌐 GitHub: https://github.com/hqllab/AutoOrgan
 
-❤️ Acknowledgments<br>
-Thank you to the following open source projects for inspiring and supporting this project:
+❤️ 致谢<br>
+感谢以下开源项目对本项目的启发与支持：
 Wasserthal, J., Breit, H.-C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W., Heye, T., Boll, D., Cyriac, J., Yang, S., Bach, M., Segeroth, M., 2023. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. Radiology: Artificial Intelligence. https://doi.org/10.1148/ryai.230024
 
 Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nat Methods 18, 203–211 (2021). https://doi.org/10.1038/s41592-020-01008-z
@@ -640,7 +639,7 @@ Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. nnU-Net: a self-configuring metho
 Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D., Nakuz, T., Shin, H. M., Sima, A. K., Kitzmantl, D., Badawi, R. D., Nardo, L., Cherry, S. R., Spencer, B. A., Hacker, M., & Beyer, T. (2022). Fully-automated, semantic segmentation of whole-body 18F-FDG PET/CT images based on data-centric artificial intelligence. Journal of Nuclear Medicine. https://doi.org/10.2967/jnumed.122.264063
 
 
-Thank you to all the doctors, researchers and developers who participated in the testing and provided feedback.The birth of AutoOrgan could not have been possible without your support and encouragement!
+感谢所有参与测试和反馈的医生、研究人员和开发者。AutoOrgan 的诞生离不开你们的支持与鼓励！
 
-⚠️ Disclaimer ：<br>This project is for academic research and teaching purposes only and is not intended for any clinical diagnosis or treatment decisions.Please ensure compliance with relevant regulations before use.
+⚠️ 免责声明 ：<br>本项目仅供学术研究和教学用途，不用于任何临床诊断或治疗决策。使用前请确保符合相关法规要求。 
   
