@@ -302,7 +302,7 @@
     </widget>
    </item>
    <item>
-    <widget class="ctkCollapsibleButton" name="segmentButton" native="true">
+    <widget class="ctkCollapsibleButton" name="segmentLayout" native="true">
      <property name="text" stdset="0">
       <string> Segment editor</string>
      </property>
