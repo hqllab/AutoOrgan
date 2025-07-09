@@ -3,7 +3,7 @@
 <p align="center">
     <img src="resources/images/AutoOrgan.gif" width="800" alt="示例图片" >
 </p>
-📌 Brief introduction<br> 
+📌 Introduction<br> 
 With the rapid growth of medical imaging data volume, manual annotation has become increasingly time-consuming and error-prone.To address this issue, we developed AutoOrgan, a deep learning framework specifically designed for the automatic segmentation of bone structures and organs in CT images.This framework combines the best practices of modern semantic segmentation models and medical image processing, and is capable of efficiently and accurately recognizing and segmenting the bones of multiple parts of the body.
 
 Compared with the current mainstream medical image segmentation models, AutoOrgan has several unique and practical advantages.
@@ -536,7 +536,7 @@ OUTPUT_FOLDER is the folder for outputting the prediction results
 TASK_ID is the task ID.
 </details>
 <details>
-<summary style="margin-left: 25px;">Task ID comparison table</summary>
+<summary style="margin-left: 25px;">Task ID对照表(Task ID comparison table)</summary>
 <div style="margin-left: 25px;">
 
 <table>
@@ -619,7 +619,7 @@ The main functions of this plugin are as follows:：
 ✅ The segmentation results are rendered and displayed in real time and can be exported in standard NIfTI or LabelMap format<br>
 ✅ Supports GPU-accelerated inference (optional)<br>
 ✅ Implements back-end inference logic based on Python and Onnx, seamlessly integrated with the 3D Slicer module<br>
-    Please refer to the guide for plugin installation and usage [AutoOrganSlicer installation steps](resources/images/插件使用方法.pdf ) -> 待完善<br>
+    Please refer to the guide for plugin installation and usage [AutoOrganSlicer installation steps](resources/images/插件使用方法.pdf ) <br>
     [Plugin video tutorial](https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing)
 
 🤝 Contribution Guide<br>
