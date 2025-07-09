@@ -617,7 +617,7 @@ nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 ✅ 分割结果实时渲染展示，并可导出为标准 NIfTI 或 LabelMap 格式<br>
 ✅ 支持 GPU 加速推理（可选）<br>
 ✅ 基于 Python 和 Onnx 实现后端推理逻辑，与 3D Slicer 模块无缝集成<br>
-    插件安装和使用指南请参考 [AutoOrganSlicer安装步骤](resources/images/插件使用方法.pdf ) -> 待完善<br>
+    插件安装和使用指南请参考 [AutoOrganSlicer安装步骤](resources/images/插件使用方法.pdf )<br>
     [插件视频教程](https://drive.google.com/file/d/1mfA5MWDJ2bxYViVFUnDsLUwDoyHkbZ9t/view?usp=sharing)
 
 🤝 贡献指南<br>
