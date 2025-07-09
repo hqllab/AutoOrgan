@@ -6,7 +6,7 @@
 📌 简介<br> 
 随着医学影像数据量的快速增长，手动标注变得愈发耗时且容易出错。为了解决这一问题，我们开发了AutoOrgan, 一个专门用于CT影像中骨结构和器官的自动分割的深度学习框架。该框架结合了现代语义分割模型与医学图像处理的最佳实践，能够高效、准确地对全身多个部位的骨骼进行识别和分割。
 
-AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特且实用的优势。首先该框架在处理肋骨与椎骨等复杂解剖区域时，能够有效修复两者之间存在的缺损或连接断裂问题,如下图(b)所示，AutoOrgan可以在肋骨椎骨连接处生成高精度的分割图。
+AutoOrgan 相较于当前主流的医学图像分割模型，具备多项独特且实用的优势。首先该框架在处理肋骨与椎骨等复杂解剖区域时，能够有效修复两者之间存在的缺损或连接断裂问题,如下图(b)所示，AutoOrgan可以在肋骨椎骨连接处生成准确的分割图。
 <p align="center">
     <img src="resources/images/rib.png" width="800" alt="示例图片" >
 </p>
@@ -522,7 +522,6 @@ AutoOrgan支持多种常见骨结构（如颅骨、脊柱、肋骨、骨盆、�
 我们模型的使用基于nnUNet框架,请参考下面的链接安装并配置nnUnet [nnUnet安装步骤](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
 ### 2. 推理
 请填写👉[注册信息](https://www.vplustech.com/AutoOrgan-registration ),你将会在24h内收到回复, 然后请下载官方提供的预训练模型文件并解压至nnUNet_results目录。
-请注意: **模型只允许被使用在非商业用途**.
   
 在命令行中输入命令进行推理
 ```sh
@@ -632,6 +631,7 @@ nnUNetv2_train <your_dataset_id> 3d_fullres 0 -tr nnUNetTrainerNoMirroring
 
 ❤️ 致谢<br>
 感谢以下开源项目对本项目的启发与支持：
+
 Wasserthal, J., Breit, H.-C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W., Heye, T., Boll, D., Cyriac, J., Yang, S., Bach, M., Segeroth, M., 2023. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. Radiology: Artificial Intelligence. https://doi.org/10.1148/ryai.230024
 
 Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nat Methods 18, 203–211 (2021). https://doi.org/10.1038/s41592-020-01008-z

@@ -12,7 +12,7 @@ Firstly, when dealing with complex anatomical regions such as ribs and vertebrae
     <img src="resources/images/rib.png" width="800" alt="image" >
 </p>
 
-In addition, the training dataset of AutoOrgan is highly diverse, covering not only conventional CT images but also various types of enhanced CT and PET/CT images.The support of this multimodal data enables AutoOrgan to maintain excellent segmentation performance and generalization ability when dealing with data from different imaging conditions and device sources.As shown in the following figure, the left (a) is the segmentation result of AutoOrgan, and the right (b) and (c) are the results of the two mainstream segmentation frameworks.
+In addition, the training dataset of AutoOrgan is highly diverse, covering not only conventional CT images but also various types of enhanced CT and PET/CT images.The support of this multimodal data enables AutoOrgan to maintain excellent segmentation performance and generalization ability when dealing with data from different imaging conditions and device sources.As shown in the following figure, the left (a) is the segmentation result of AutoOrgan, and the right (b) and (c) are the results of the other two mainstream segmentation frameworks.
 <p align="center">
     <img src="resources/images/rib_compare.png" width="800" alt="image" >
 </p>
@@ -523,7 +523,6 @@ AutoOrgan supports precise segmentation of various common bone structures (such 
 The use of our model is based on the nnUNet framework. Please refer to the link below to install and configure nnUnet [nnUnet install guidance](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
 ### 2. Inference 
 Please fill in👉[registration information](https://www.vplustech.com/AutoOrgan-registration ),You will receive a reply within 24 hours. Then please download the pre-trained model file provided by the official and extract it to the nnUNet_results directory.
-Please note: **The model is only permitted to be used for non-commercial purposes.**
   
 Enter commands in the command line for reasoning
 ```sh
@@ -633,6 +632,7 @@ If you have any questions, cooperation intentions or custom development needs, p
 
 ❤️ Acknowledgments<br>
 Thank you to the following open source projects for inspiring and supporting this project:
+
 Wasserthal, J., Breit, H.-C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W., Heye, T., Boll, D., Cyriac, J., Yang, S., Bach, M., Segeroth, M., 2023. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. Radiology: Artificial Intelligence. https://doi.org/10.1148/ryai.230024
 
 Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nat Methods 18, 203–211 (2021). https://doi.org/10.1038/s41592-020-01008-z
@@ -642,5 +642,5 @@ Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D.
 
 Thank you to all the doctors, researchers and developers who participated in the testing and provided feedback.The birth of AutoOrgan could not have been possible without your support and encouragement!
 
-⚠️ Disclaimer ：<br>This project is for academic research and teaching purposes only and is not intended for any clinical diagnosis or treatment decisions.Please ensure compliance with relevant regulations before use.
+⚠️ Disclaimer ：<br>This project is for academic research and teaching purposes only and is not intended for any clinical diagnosis or treatment decisions. Please ensure compliance with relevant regulations before use.
   
