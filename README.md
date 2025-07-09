@@ -523,7 +523,6 @@ AutoOrgan supports precise segmentation of various common bone structures (such 
 The use of our model is based on the nnUNet framework. Please refer to the link below to install and configure nnUnet [nnUnet install guidance](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md )
 ### 2. Inference 
 Please fill in👉[registration information](https://www.vplustech.com/AutoOrgan-registration ),You will receive a reply within 24 hours. Then please download the pre-trained model file provided by the official and extract it to the nnUNet_results directory.
-Please note: **The model is only permitted to be used for non-commercial purposes.**
   
 Enter commands in the command line for reasoning
 ```sh
