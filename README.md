@@ -12,7 +12,7 @@ Firstly, when dealing with complex anatomical regions such as ribs and vertebrae
     <img src="resources/images/rib.png" width="800" alt="image" >
 </p>
 
-In addition, the training dataset of AutoOrgan is highly diverse, covering not only conventional CT images but also various types of enhanced CT and PET/CT images.The support of this multimodal data enables AutoOrgan to maintain excellent segmentation performance and generalization ability when dealing with data from different imaging conditions and device sources.As shown in the following figure, the left (a) is the segmentation result of AutoOrgan, and the right (b) and (c) are the results of the two mainstream segmentation frameworks.
+In addition, the training dataset of AutoOrgan is highly diverse, covering not only conventional CT images but also various types of enhanced CT and PET/CT images.The support of this multimodal data enables AutoOrgan to maintain excellent segmentation performance and generalization ability when dealing with data from different imaging conditions and device sources.As shown in the following figure, the left (a) is the segmentation result of AutoOrgan, and the right (b) and (c) are the results of the other two mainstream segmentation frameworks.
 <p align="center">
     <img src="resources/images/rib_compare.png" width="800" alt="image" >
 </p>
@@ -642,5 +642,5 @@ Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D.
 
 Thank you to all the doctors, researchers and developers who participated in the testing and provided feedback.The birth of AutoOrgan could not have been possible without your support and encouragement!
 
-⚠️ Disclaimer ：<br>This project is for academic research and teaching purposes only and is not intended for any clinical diagnosis or treatment decisions.Please ensure compliance with relevant regulations before use.
+⚠️ Disclaimer ：<br>This project is for academic research and teaching purposes only and is not intended for any clinical diagnosis or treatment decisions. Please ensure compliance with relevant regulations before use.
   
