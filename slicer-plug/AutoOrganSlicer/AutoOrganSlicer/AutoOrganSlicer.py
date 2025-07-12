@@ -1379,3 +1379,4 @@ class AutoOrganSlicerTest(ScriptedLoadableModuleTest):
             logging.warning("test_AutoOrganSlicer1 logic testing was skipped")
 
         self.delayDisplay('Test passed')
+ 
